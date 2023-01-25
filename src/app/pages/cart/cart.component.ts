@@ -69,12 +69,12 @@ export class CartComponent implements OnInit {
 
   onCheckout(): void {
     this.httpClient
-      .post("http://localhost:4242/checkout", {
+      .post("http://localhost:4242/checkout/", {
         items: this.cart.items,
       })
       .subscribe(async (res: any) => {
         let stripe = await loadStripe(
-          "pk_test_51MUBJAIeDAlGNAb55W99i2QQA2b0rOI4NPyUD1IY5ONDbrr3AREPZRyoDRgJWnHHqHxLlgdFwNYhbgzmM84svLEX00Yr1YFwN9"
+          "sk_test_51MUBJAIeDAlGNAb5ORa92KabvlGlUEixdhL1G7Mbl98W3bWjbae8gNtbmWloILhB2xP0RH5h4uKCdiAj1Ae5Rzkh009gzRl2nx"
         );
         stripe?.redirectToCheckout({
           sessionId: res.id,
